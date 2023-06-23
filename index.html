@@ -100,11 +100,6 @@
         </div>
       </div>
     </div>
-    <iframe
-      style="width: 100%; height: 700px; display: none; margin-top: 16px"
-      id="iframe"
-      src="./firework/index.html"
-    ></iframe>
     <script type="text/javascript">
       var offsetX = $("#loveHeart").width() / 2;
       var offsetY = $("#loveHeart").height() / 2 - 55;
@@ -141,16 +136,28 @@
     </script>
     <script type="text/javascript">
       function closeLight() {
-        $("#body").css({ background: "black" });
-        $("#mainDiv").css({ display: "none" });
-        $("#lightSetting").css({ display: "block" });
-        $("#iframe").css({ display: "block" });
+        let sign = window.prompt("凤凰与火，先有哪一个？");
+        if (sign === "一个循环，没有起点") {
+          alert("欢迎来到“食堂最远的”拉文克劳！");
+          $("#body").css({ background: "black" });
+          $("#mainDiv").css({ display: "none" });
+          $("#lightSetting").css({ display: "block" });
+          var iframe = document.createElement("iframe");
+          iframe.id = "iframe";
+          iframe.src = "./firework/index.html";
+          iframe.style = "width: 100%; height: 700px; margin-top: 16px";
+          document.body.appendChild(iframe);
+        } else {
+          alert("暗号错了哦");
+          return;
+        }
       }
       function openLight() {
         $("#body").css({ background: "#ffe" });
         $("#mainDiv").css({ display: "block" });
         $("#lightSetting").css({ display: "none" });
-        $("#iframe").css({ display: "none" });
+        var iframe = document.getElementById("iframe");
+        document.body.removeChild(iframe);
       }
     </script>
   </body>
